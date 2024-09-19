@@ -6,3 +6,5 @@ const inventory = [
     {name: 'bracelet', price: 35, quantity: 55}
 ]
 
+//Task 2 Create an Orders array of Order Objects
+const orders= [] //This array will contain customernames, items (name, and quantity), status
