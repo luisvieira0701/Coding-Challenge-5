@@ -51,3 +51,15 @@ function calculateOrderTotal(order) {
 //Testing Function with Michael Myer's Order
 let MichaelOrder = orders[0]
 console.log(`Michael's total order is: $${calculateOrderTotal(MichaelOrder)}`)
+
+//Task 5- Create a Function to Mark an Order as Completed
+function completeOrder(customerName) {
+    let order = orders.find(order => order.customerName === customerName)
+        if (order.status = 'pending') {
+            return order.status = 'completed'
+        }
+}
+
+// Testing Function with One Michael Myer's Order
+let OrderCompletedTest = completeOrder('Michael Myers')
+console.log(`Michael Myers's order is ${OrderCompletedTest}`)
