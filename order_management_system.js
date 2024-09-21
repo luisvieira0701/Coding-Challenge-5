@@ -12,30 +12,42 @@ let orders= [] //This array will contain customernames, items (name, and quantit
 
 
 //Task 3 Create a Function to place an Order
-function placeOrder(customerName, itemsOrdered, OrderStatus)  {
+function placeOrder(customerName, itemsOrdered,)  {
     itemsOrdered.forEach(item => {
-        if (itemsOrdered.quantity < inventory.quantity) {
-                return console.log('ERROR: Item has insufficient stock for order')
+        let product = inventory.find(product => product.name === item.name);
+        if (!product || product.quantity < item.quantity) {
+            return `ERROR: Insufficient stock for ${item.name}`
         } else {
-            let product = inventory.find((product => product.name = item.name))
-                return product.quantity -= item.Quantity
+            return product.quantity -= item.quantity
         }})
-     orders.push({
-        customer:customerName,
-        jewelryProducts: itemsOrdered,
-        OrderStatus: status
         
+    orders.push({
+        customerName,
+        items: itemsOrdered,
+        status: 'pending'
         });
-        console.log (`${customerName} orders:`, itemsOrdered, OrderStatus )
+
 }
 
 // Testing the Function with orders
 placeOrder('Michael Myers', [
-    {name: 'watch', quantity: 15},
-    {name: 'necklace', quantity: 30},
-], OrderStatus = 'pending') 
+    {name: 'watch', quantity: 30},
+    {name: 'necklace', quantity: 30}
+]);
 
 placeOrder('Freddy Krueger', [
     {name: 'watch', quantity: 30},
     {name: 'ring', quantity: 30}
-], OrderStatus = 'pending')
+])
+
+//Task 4 Create Function to calculate total for an order
+function calculateOrderTotal(order) {
+    return order.items.reduce((totalOrder, item) => {
+        let product = inventory.find(product => product.name === item.name);
+            return totalOrder + (item.quantity * product.price)
+    }, 0);
+}
+ 
+//Testing Function with Michael Myer's Order
+let MichaelOrder = orders[0]
+console.log(`Michael's total order is: $${calculateOrderTotal(MichaelOrder)}`)
