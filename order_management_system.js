@@ -40,6 +40,11 @@ placeOrder('Freddy Krueger', [
     {name: 'ring', quantity: 30}
 ])
 
+placeOrder('Edison Cheng', [
+    {name: 'ring', quantity: 1},
+    {name: 'watch', quantity: 1}
+])
+
 //Task 4 Create Function to calculate total for an order
 function calculateOrderTotal(order) {
     return order.items.reduce((totalOrder, item) => {
@@ -50,7 +55,9 @@ function calculateOrderTotal(order) {
  
 //Testing Function with Michael Myer's Order
 let MichaelOrder = orders[0]
+let EdisonOrder = orders[2]
 console.log(`Michael's total order is: $${calculateOrderTotal(MichaelOrder)}`)
+console.log(`Edison Cheng's total order is: $${calculateOrderTotal(EdisonOrder)}`)
 
 //Task 5- Create a Function to Mark an Order as Completed
 function completeOrder(customerName) {
@@ -62,4 +69,19 @@ function completeOrder(customerName) {
 
 // Testing Function with One Michael Myer's Order
 let OrderCompletedTest = completeOrder('Michael Myers')
+let EdisonOrderComplete = completeOrder(`Edison Cheng`)
 console.log(`Michael Myers's order is ${OrderCompletedTest}`)
+console.log(`Edison Cheng's order is ${EdisonOrderComplete}`)
+
+//Task 6- Create a Function to check Pending Orders
+function checkPendingOrders () {
+    orders.forEach(order => 
+       { if (order.status === 'pending') {
+        console.log(order)
+       }
+    })};
+
+//Details for pending orders
+console.log('Details from pending orders:')
+console.log(checkPendingOrders())
+
